@@ -186,6 +186,20 @@
     100% { transform: translateY(0px); }
 }
 
+.telefone {
+    max-width: 250px; /* Ajuste conforme necessário */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.cargo {
+    max-width: 250px; /* Ajuste conforme necessário */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
 
     </style>
 </head>
@@ -193,7 +207,7 @@
 
     <div class="div-principal">
     <h2 class="text-titulo-site">Assinatura do e-mail da Sim.Digital</h2>
-    <h3 class="text-subtitulo-site">Preencha todos os campos corretamente.</h3>
+    <h3 class="text-subtitulo-site">Preencha todos os campos corretamente. </h3>
     
     <div class="inputs-container">
         <div class="input-with-icon">
@@ -206,7 +220,7 @@
         </div>
         <div class="input-with-icon">
             <i class="fas fa-briefcase"></i>
-            <input type="text" id="cargo" maxlength="26" placeholder="Cargo" oninput="atualizarTexto('cargo', 'textCargo')">
+            <input type="text" id="cargo" maxlength="30" placeholder="Cargo" oninput="atualizarTexto('cargo', 'textCargo')">
         </div>
         <div class="input-with-icon">
             <i class="fas fa-phone"></i>
@@ -214,7 +228,7 @@
         </div>
         <div class="input-with-icon">
             <i class="fas fa-envelope"></i>
-            <input type="text" id="telefone" maxlength="29" placeholder="E-mail" oninput="atualizarTexto('telefone', 'textTelefone')">
+            <input type="text" id="telefone" maxlength="36" placeholder="E-mail" oninput="atualizarTexto('telefone', 'textTelefone')">
         </div>
         <button class="button-inputs-container" onclick="gerarImagem()">Gerar Cartão</button>
     </div>
