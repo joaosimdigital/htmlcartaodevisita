@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cartão Visita</title>
+    <title>Assinatura de e-mail</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
 
@@ -16,6 +16,7 @@
             position: relative;
             display: inline-block;
             margin-top: 50px;
+            margin-bottom: 50px;
         }
         .cartao {
             width: 600px; 
@@ -32,10 +33,21 @@
             font-size: 26px;
             font-weight: bold;
         }
+        .overlay2 {
+            position: absolute;
+            top: 45px;
+            left: 10px;
+            color: black;
+            text-align: start;
+            font-family: 'Poppins', sans-serif;
+            width: 270px;
+            font-size: 26px;
+            font-weight: 100;
+        }
         .cargo {
             position: absolute;
             font-family: 'Poppins', sans-serif;
-            top: 55px;
+            top: 80px;
             left: 10px;
             width: 270px;
             font-weight: 100;
@@ -100,12 +112,14 @@
     background-color: orangered;
     width: 200px;
     color: white;
+    margin-top: 5px;
     border-radius: 150px;
     border: 1px solid orangered;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     cursor: pointer;
     height: 40px;
+    margin-left: 20px;
     transition: all 0.2s ease-in-out;
     box-shadow: 0px 5px 15px rgba(255, 69, 0, 0.5);
    
@@ -118,6 +132,23 @@
     color: orangered;
 }
 
+.body-principal{
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.div-principal {
+    background-color: #FAFAFA;
+    border-radius: 10px;
+    width: 50%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra preta */
+}
+
+
 /* Animação Flutuante */
 @keyframes float {
     0% { transform: translateY(0px); }
@@ -128,13 +159,15 @@
 
     </style>
 </head>
-<body>
+<body class="body-principal">
 
-    <h2 class="text-titulo-site">Cartão Visita Sim.Digital</h2>
+    <div class="div-principal">
+    <h2 class="text-titulo-site">Assinatura do e-mail Sim.Digital</h2>
     <h3 class="text-subtitulo-site">Preencha todos os campos corretamente.</h3>
     
     <div class="inputs-container">
         <input type="text" id="nome" maxlength="20" placeholder="Nome" oninput="atualizarTexto('nome', 'textNome')">
+        <input type="text" id="sobrenome" maxlength="20" placeholder="Sobrenome" oninput="atualizarTexto('sobrenome', 'textSobrenome')">
         <input type="text" id="cargo" maxlength="20" placeholder="Cargo" oninput="atualizarTexto('cargo', 'textCargo')">
         <input type="text" id="email" maxlength="20" placeholder="Telefone" oninput="atualizarTexto('email', 'textEmail')">
         <input type="text" id="telefone" maxlength="35" placeholder="E-mail" oninput="atualizarTexto('telefone', 'textTelefone')">
@@ -145,10 +178,12 @@
     <div class="container" id="cartaoContainer">
         <img src="./Cópia de ASS SIM.DIGITAL (1).png" alt="Cartão" class="cartao">
         <div class="overlay" id="textNome">SEU NOME</div>
+        <div class="overlay2" id="textSobrenome">SEU SOBRENOME</div>
         <div class="cargo" id="textCargo">SEU CARGO</div>
         <div class="telefone" id="textTelefone">SEU EMAIL</div>
         <div class="email" id="textEmail">SEU TELEFONE</div>
     </div>
+</div>
 
     <script>
         function atualizarTexto(inputId, textId) {
@@ -159,10 +194,11 @@
         function gerarImagem() {
             // Verifica se os campos "nome" e "cargo" foram preenchidos
             let nome = document.getElementById("nome").value.trim();
+            let sobrenome = document.getElementById("sobrenome").value.trim();
             let cargo = document.getElementById("cargo").value.trim();
     
-            if (nome === "" || cargo === "") {
-                alert("Por favor, preencha todos os campos obrigatórios (Nome e Cargo).");
+            if (nome === "" || cargo === "" || sobrenome === "") {
+                alert("Por favor, preencha todos os campos obrigatórios (Nome, Sobrenome e Cargo).");
                 return;
             }
     
