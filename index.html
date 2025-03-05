@@ -6,6 +6,7 @@
     <title>Assinatura de e-mail</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
         body {
@@ -95,14 +96,37 @@
     justify-content: space-between;
 }
 
+.inputs-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas de tamanho igual */
+    gap: 10px; /* Espaçamento entre os inputs */
+    max-width: 500px; /* Largura máxima para não ficar muito largo */
+    margin: auto; /* Centraliza na tela */
+    justify-content: space-between;
+}
+
+.input-with-icon {
+    position: relative;
+    width: 100%;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ccc;
+    font-size: 13px;
+}
+
 .inputs-container input {
-    width: 90%; /* Faz os inputs ocuparem toda a célula do grid */
-    padding: 8px;
+    width: 80%;
+    padding: 8px 8px 8px 30px; /* Espaço à esquerda para o ícone */
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
-    margin: 10px;
+    margin:10px 0px;
 }
 
 .inputs-container input:focus {
@@ -169,13 +193,29 @@
     <h3 class="text-subtitulo-site">Preencha todos os campos corretamente.</h3>
     
     <div class="inputs-container">
-        <input type="text" id="nome" maxlength="14" placeholder="Nome" oninput="atualizarTexto('nome', 'textNome')">
-        <input type="text" id="sobrenome" maxlength="14" placeholder="Sobrenome" oninput="atualizarTexto('sobrenome', 'textSobrenome')">
-        <input type="text" id="cargo" maxlength="30" placeholder="Cargo" oninput="atualizarTexto('cargo', 'textCargo')">
-        <input type="text" id="email" maxlength="20" placeholder="Telefone" oninput="atualizarTexto('email', 'textEmail')">
-        <input type="text" id="telefone" maxlength="35" placeholder="E-mail" oninput="atualizarTexto('telefone', 'textTelefone')">
+        <div class="input-with-icon">
+            <i class="fas fa-user"></i>
+            <input type="text" id="nome" maxlength="16" placeholder="Nome" oninput="atualizarTexto('nome', 'textNome')">
+        </div>
+        <div class="input-with-icon">
+            <i class="fas fa-user-alt"></i>
+            <input type="text" id="sobrenome" maxlength="16" placeholder="Sobrenome" oninput="atualizarTexto('sobrenome', 'textSobrenome')">
+        </div>
+        <div class="input-with-icon">
+            <i class="fas fa-briefcase"></i>
+            <input type="text" id="cargo" maxlength="30" placeholder="Cargo" oninput="atualizarTexto('cargo', 'textCargo')">
+        </div>
+        <div class="input-with-icon">
+            <i class="fas fa-phone"></i>
+            <input type="text" id="email" maxlength="22" placeholder="Telefone" oninput="atualizarTexto('email', 'textEmail')">
+        </div>
+        <div class="input-with-icon">
+            <i class="fas fa-envelope"></i>
+            <input type="text" id="telefone" maxlength="34" placeholder="E-mail" oninput="atualizarTexto('telefone', 'textTelefone')">
+        </div>
         <button class="button-inputs-container" onclick="gerarImagem()">Gerar Cartão</button>
     </div>
+    
   
 
     <div class="container" id="cartaoContainer">
