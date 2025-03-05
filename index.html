@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão Interativo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            position: relative;
+            display: inline-block;
+            margin-top: 50px;
+        }
+        .cartao {
+            width: 600px; 
+            height: 200px;
+        }
+        .overlay {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            color: black;
+            text-align: start;
+            font-family: 'Poppins', sans-serif;
+            width: 270px;
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .cargo {
+            position: absolute;
+            font-family: 'Poppins', sans-serif;
+            top: 55px;
+            left: 10px;
+            width: 270px;
+            font-weight: 100;
+            text-align: start;
+            font-size: 16px;
+            color: gray;
+        }
+        .telefone {
+            position: absolute;
+            top: 80px;
+            font-family: 'Poppins', sans-serif;
+            right: 40px;
+            width: 230px;
+           text-align: start;
+            font-size: 16px;
+            color: black;
+        }
+        .email {
+            position: absolute;
+            font-family: 'Poppins', sans-serif;
+            top: 27px;
+            text-align: start;
+            width: 230px;
+          
+            right: 40px;
+            font-size: 16px;
+            color: black;
+        }
+        .text-titulo-site{
+            font-size: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .text-subtitulo-site{
+            font-size: 15px;
+            margin-top: -20px;
+            font-weight: 200;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .inputs-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas de tamanho igual */
+    gap: 10px; /* Espaçamento entre os inputs */
+    max-width: 500px; /* Largura máxima para não ficar muito largo */
+    margin: auto; /* Centraliza na tela */
+    justify-content: space-between;
+}
+
+.inputs-container input {
+    width: 90%; /* Faz os inputs ocuparem toda a célula do grid */
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    margin: 10px;
+}
+
+.inputs-container input:focus {
+    border-color: orangered; /* Azul ao focar */
+}
+.button-inputs-container{
+    background-color: orangered;
+    width: 200px;
+    color: white;
+    border-radius: 150px;
+    border-color: transparent;
+    border: 1px solid orangered;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    height: 40px;
+
+}
+
+    </style>
+</head>
+<body>
+
+    <h2 class="text-titulo-site">Cartão Visita Sim.Digital</h2>
+    <h3 class="text-subtitulo-site">Preencha todos os campos corretamente.</h3>
+    
+    <div class="inputs-container">
+        <input type="text" id="nome" maxlength="20" placeholder="Nome" oninput="atualizarTexto('nome', 'textNome')">
+        <input type="text" id="cargo" maxlength="20" placeholder="Cargo" oninput="atualizarTexto('cargo', 'textCargo')">
+        <input type="text" id="email" maxlength="20" placeholder="Telefone" oninput="atualizarTexto('email', 'textEmail')">
+        <input type="text" id="telefone" maxlength="35" placeholder="E-mail" oninput="atualizarTexto('telefone', 'textTelefone')">
+        <button class="button-inputs-container" onclick="gerarImagem()">Gerar Cartão</button>
+    </div>
+  
+
+    <div class="container" id="cartaoContainer">
+        <img src="./Cópia de ASS SIM.DIGITAL (1).png" alt="Cartão" class="cartao">
+        <div class="overlay" id="textNome">SEU NOME</div>
+        <div class="cargo" id="textCargo">SEU CARGO</div>
+        <div class="telefone" id="textTelefone">SEU EMAIL</div>
+        <div class="email" id="textEmail">SEU TELEFONE</div>
+    </div>
+
+    <script>
+        function atualizarTexto(inputId, textId) {
+            let valor = document.getElementById(inputId).value;
+            document.getElementById(textId).innerText = valor || document.getElementById(textId).getAttribute("data-placeholder");
+        }
+
+        function gerarImagem() {
+            let cartao = document.getElementById("cartaoContainer");
+            html2canvas(cartao).then(canvas => {
+                let link = document.createElement("a");
+                link.href = canvas.toDataURL("image/png");
+                link.download = "cartao.png";
+                link.click();
+            });
+        }
+    </script>
+
+</body>
+</html>
